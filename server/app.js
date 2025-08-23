@@ -18,14 +18,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Parse requests of content-type - application/json
 app.use(bodyParser.json());
-const allowedOrigins = [
+const allowedStatic = [
 	'http://localhost:3000',
-	'http://hack-rx4-0-main-q6j158p2x-nayanika-12s-projects.vercel.app'
+	'https://hack-rx4-0-main-fq2tqzxzs-nayanika-12s-projects.vercel.app',
+	'https://hack-rx4-0-main.vercel.app'
 ];
 
 const corsOptions = {
-	origin: allowedOrigins,
-	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	origin: (origin, callback) => {
+		if (!origin) return callback(null, true); // allow server-to-server/curl
+		const vercelPreview = /\.vercel\.app$/i.test(origin);
+		if (allowedStatic.includes(origin) || vercelPreview) return callback(null, true);
+		return callback(new Error('Not allowed by CORS'));
+	},
+	methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 	allowedHeaders: ['Content-Type', 'Authorization'],
 	credentials: true
 };
@@ -53,6 +59,15 @@ app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/transactions', transactionRoutes);
 app.use('/budget', budgetRoutes);
+
+// Basic health endpoints
+app.get('/', (req, res) => {
+	res.status(200).send('OK');
+});
+
+app.get('/health', (req, res) => {
+	res.status(200).json({ status: 'ok' });
+});
 
 // Start the server
 const port = process.env.PORT || 5000;
