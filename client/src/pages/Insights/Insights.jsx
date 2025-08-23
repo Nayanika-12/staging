@@ -1,7 +1,3 @@
-import React, { Component } from 'react';
-import Chart from 'react-apexcharts';
-
-import ApexCharts from 'apexcharts';
 import './Insights.css';
 import Histogram from '../../components/Histogram/Histogram';
 import Sparklines from '../../components/Sparklines/Sparklines';
@@ -10,7 +6,6 @@ import Sparklines3 from '../../components/Sparklines3/Sparklines3';
 import DonutChart from '../../components/Piechart/Piechart';
 import AreaChart from '../../components/Areachart/Areachart';
 import StackedBarChart from '../../components/Savingschart/Savingschart';
-import { fontFamily } from '@mui/system';
 import { useAppSelector } from '../../app/hooks';
 
 function Insights() {
@@ -41,19 +36,19 @@ function Insights() {
 					This Year
 				</h1>
 			</div>
-			<div class="row sparkboxes mt-2 mb-4">
-				<div class="col-md-4">
-					<div class="column1">
+			<div className="row sparkboxes mt-2 mb-4">
+				<div className="col-md-4">
+					<div className="column1">
 						<Sparklines thisYearData={thisYearData} />
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="column2">
+				<div className="col-md-4">
+					<div className="column2">
 						<Sparklines2 thisYearData={thisYearData} />
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="column3">
+				<div className="col-md-4">
+					<div className="column3">
 						<Sparklines3 thisYearData={thisYearData} />
 					</div>
 				</div>
@@ -66,21 +61,20 @@ function Insights() {
 						marginTop: '1rem',
 						fontSize: '2rem',
 						fontWeight: 'bolder',
-						marginTop: '4rem'
 					}}
 				>
 					Last 5 Years
 				</h1>
 			</div>
-			<div class="row mt-2 mb-4">
-				<div class="col-md-6 box-container">
-					<div class="box">
+			<div className="row mt-2 mb-4">
+				<div className="col-md-6 box-container">
+					<div className="box">
 						<Histogram lastFiveYearData={lastFiveYearData} />
 					</div>
 				</div>
 
-				<div class="col-md-6 box-container">
-					<div class="box">
+				<div className="col-md-6 box-container">
+					<div className="box">
 						<AreaChart lastFiveYearData={lastFiveYearData} />
 					</div>
 				</div>
@@ -98,17 +92,17 @@ function Insights() {
 					Category-wise expenses (Last 6 Months)
 				</h1>
 			</div>
-			<div class="row mt-2 mb-4">
-				<div class="col-md-6 box-container">
-					<div class="box">
+			<div className="row mt-2 mb-4">
+				<div className="col-md-6 box-container">
+					<div className="box">
 						<DonutChart
 							sixMonthsCategoryData={sixMonthsCategoryData}
 							categories={categories}
 						/>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="box box-container">
+				<div className="col-md-6">
+					<div className="box box-container">
 						<StackedBarChart
 							sixMonthsCategoryData={sixMonthsCategoryData}
 							categories={categories}
