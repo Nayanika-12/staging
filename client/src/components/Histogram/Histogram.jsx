@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import 'apexcharts/dist/apexcharts.css';
 import ApexCharts from 'apexcharts';
-import { useAppSelector } from '../../app/hooks';
 
 const Histogram = ({ lastFiveYearData }) => {
 	const chartRef = useRef(null);

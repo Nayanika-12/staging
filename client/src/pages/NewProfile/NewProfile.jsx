@@ -20,9 +20,8 @@ import b4_2 from '../../imgs/badges/4.png';
 import b5 from '../../imgs/badges/5.jpg';
 import b6 from '../../imgs/badges/6.jpg';
 
-import badge from '../../imgs/badges/trial.png';
 import coin from '../../imgs/coin.png';
-import { Avatar, Badge, Button, Divider } from '@material-ui/core';
+import { Avatar, Badge, Button } from '@material-ui/core';
 import Leaderboard from '../../components/Leaderboard/Leaderboard';
 
 function NewProfile({ editProfileHandler }) {

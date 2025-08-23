@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './Sidebar.css';
-import Logo from '../imgs/logo.png';
 import { UilSignOutAlt } from '@iconscout/react-unicons';
 import { SidebarData } from '../Data/Data';
 import { UilBars } from '@iconscout/react-unicons';
 import { motion } from 'framer-motion';
 import { UilUniversity } from '@iconscout/react-unicons';
-import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { useAppDispatch} from '../app/hooks';
 import { logout } from '../features/transactionState/transactionStateSlice';
-import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ onChildProp }) => {
 	const [selected, setSelected] = useState(0);

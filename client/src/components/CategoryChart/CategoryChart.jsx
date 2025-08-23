@@ -26,8 +26,9 @@ function CategoryChart({ transactionsData }) {
 			transaction.type === 'expense' &&
 			transactionDate.getMonth() === new Date().getMonth()
 		) {
-			return transaction;
+			return true;
 		}
+		return false;
 	});
 	const expenseCategories = [
 		...new Set(expenseTransactions.map((transaction) => transaction.category))

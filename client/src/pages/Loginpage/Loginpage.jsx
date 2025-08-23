@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './Loginpage.css';
 import { useAppDispatch } from '../../app/hooks';
 import { login } from '../../features/transactionState/transactionStateSlice';
-import { ToastContainer } from 'react-toastify';
-import { getUserInfoApi, loginApi } from '../../api/apiCalls';
+import { loginApi } from '../../api/apiCalls';
 import { useNavigate } from 'react-router-dom';
 function Loginpage() {
 	const [email, setEmail] = useState('');

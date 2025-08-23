@@ -1,11 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import * as ReactDOM from 'react-dom';
 
 import Budget from './pages/Budget/Budget';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Insights from './pages/Insights/Insights';
-import Profile from './pages/profile/Profile';
 import Sidebar from './components/Sidebar';
 import { useAppDispatch } from './app/hooks';
 import {
@@ -22,9 +20,7 @@ import {
 } from './features/transactionState/transactionStateSlice';
 import PreloaderScreen from './pages/PreloaderScreen/PreloaderScreen';
 
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import NewProfile from './pages/NewProfile/NewProfile';
 import ProfileContainer from './pages/ProfileContainer/ProfileContainer';
 
 function App() {

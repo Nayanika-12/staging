@@ -14,20 +14,6 @@ import { deleteCategoryBudget } from '../../features/transactionState/transactio
 import { useEffect } from 'react';
 import { deleteBudgetDataApi } from '../../api/apiCalls';
 
-const makeStyle = (type) => {
-	if (type === 'delete') {
-		return {
-			background: '#f1807d',
-			color: 'black'
-		};
-		// } else if (type === 'expense') {
-		// 	return {
-		// 		background: '#BB86FC',
-		// 		color: 'black'
-		// 	};
-	}
-};
-
 export default function BasicTable() {
 	const token = localStorage.getItem('token');
 	const [rows, setRows] = React.useState([]);

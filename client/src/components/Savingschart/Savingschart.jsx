@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import ApexCharts from 'apexcharts';
+import PropTypes from 'prop-types';
 
 const StackedBarChart = ({ sixMonthsCategoryData, categories }) => {
 	const chartRef = useRef(null);
@@ -117,9 +118,13 @@ const StackedBarChart = ({ sixMonthsCategoryData, categories }) => {
 		return () => {
 			chart.destroy();
 		};
-	}, []);
+	}, [lastSixMonths, result]);
 
 	return <div id="chart" ref={chartRef}></div>;
 };
 
 export default StackedBarChart;
+StackedBarChart.propTypes = {
+	sixMonthsCategoryData: PropTypes.array,
+	categories: PropTypes.array
+};

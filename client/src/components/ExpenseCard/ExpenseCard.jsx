@@ -3,6 +3,7 @@ import './ExpenseCard.css';
 
 import { motion, AnimateSharedLayout } from 'framer-motion';
 import { TextField, Button, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { useAppDispatch } from '../../app/hooks';
 import { addTransaction } from '../../features/transactionState/transactionStateSlice';
 import { addTransactionApi } from '../../api/apiCalls';
@@ -17,23 +18,10 @@ const ExpenseCard = (props) => {
 	);
 };
 
-const lightColor = {
-	input: {
-		color: 'white',
-		'&::placeholder': {
-			opacity: 1
-		}
-	},
-	label: {
-		color: 'white'
-	}
-};
-
 // Compact Card
 function CompactCard({ param }) {
 	const currDate = new Date();
 	const prevSixMonthDate = new Date(currDate.setMonth(currDate.getMonth() - 5));
-	const currMonth = currDate.getMonth();
 	const [name, setName] = useState('');
 	const [amount, setAmount] = useState(0);
 	const [category, setCategory] = useState('Other');
@@ -153,7 +141,11 @@ function CompactCard({ param }) {
 							value={category}
 						>
 							{param.categories.map((category) => {
-								return <MenuItem value={category}>{category}</MenuItem>;
+								return (
+									<MenuItem key={category} value={category}>
+										{category}
+									</MenuItem>
+								);
 							})}
 						</Select>
 					</FormControl>
@@ -176,3 +168,11 @@ function CompactCard({ param }) {
 // Expanded Card
 
 export default ExpenseCard;
+ExpenseCard.propTypes = {
+	param: PropTypes.shape({
+		title: PropTypes.string,
+		png: PropTypes.any,
+		type: PropTypes.string,
+		categories: PropTypes.array
+	})
+};

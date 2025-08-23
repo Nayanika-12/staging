@@ -1,21 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import ApexCharts from 'apexcharts';
+import PropTypes from 'prop-types';
 
 const AreaChart = ({ lastFiveYearData }) => {
 	const data = [...lastFiveYearData];
 	const date = new Date();
 	const thisYear = date.getFullYear();
-	const incomes = data
-		.sort((a, b) => a.index - b.index)
-		.map((item) => item.income);
+	const sortedByIndexForIncome = [...data].sort((a, b) => a.index - b.index);
+	const incomes = sortedByIndexForIncome.map((item) => item.income);
 
-	const expenses = data
-		.sort((a, b) => a.index - b.index)
-		.map((item) => item.expense);
+	const sortedByIndexForExpenses = [...data].sort((a, b) => a.index - b.index);
+	const expenses = sortedByIndexForExpenses.map((item) => item.expense);
 
-	const savings = data
-		.sort((a, b) => a.index - b.index)
-		.map((item) => item.income - item.expense);
+	const sortedByIndexForSavings = [...data].sort((a, b) => a.index - b.index);
+	const savings = sortedByIndexForSavings.map((item) => item.income - item.expense);
 
 	const years = [
 		thisYear - 4,
@@ -45,7 +43,7 @@ const AreaChart = ({ lastFiveYearData }) => {
 	});
 
 	const chartRef = useRef(null);
-	var colorPalette = ['#00D8B6', '#008FFB', '#FF4560'];
+	const colorPalette = ['#00D8B6', '#008FFB', '#FF4560'];
 
 	useEffect(() => {
 		const options = {
@@ -93,14 +91,6 @@ const AreaChart = ({ lastFiveYearData }) => {
 			fill: {
 				opacity: 1
 			},
-			// title: {
-			// 	text: '',
-			// 	align: 'left',
-			// 	style: {
-			// 		fontSize: '18px',
-			// 		color: 'white'
-			// 	}
-			// },
 			markers: {
 				size: 0,
 				style: 'hollow',
@@ -154,9 +144,12 @@ const AreaChart = ({ lastFiveYearData }) => {
 		return () => {
 			chart.destroy();
 		};
-	}, []);
+	}, [colorPalette, incomeData, savingsData, expenseData]);
 
 	return <div className="chart-container" id="area" ref={chartRef}></div>;
 };
 
 export default AreaChart;
+AreaChart.propTypes = {
+	lastFiveYearData: PropTypes.array
+};

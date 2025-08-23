@@ -86,7 +86,6 @@ function Insights() {
 						marginTop: '1rem',
 						fontSize: '2rem',
 						fontWeight: 'bolder',
-						marginTop: '4rem'
 					}}
 				>
 					Category-wise expenses (Last 6 Months)

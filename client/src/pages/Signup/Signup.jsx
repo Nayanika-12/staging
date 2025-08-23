@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import './Signup.css';
-import { useAppDispatch } from '../../app/hooks';
-import { login } from '../../features/transactionState/transactionStateSlice';
 import { signupApi } from '../../api/apiCalls';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
 	const navigate = useNavigate();
@@ -32,7 +30,7 @@ function Signup() {
 
 			navigate('/login');
 		} catch (error) {
-			throw error;
+			console.error(error);
 		}
 	};
 
@@ -91,7 +89,15 @@ function Signup() {
 							placeholder="Confirm Password"
 						/>
 
-						<p style={{ cursor: 'pointer' }} onClick={() => navigate('/login')}>
+						<p
+							style={{ cursor: 'pointer' }}
+							role="button"
+							tabIndex={0}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter' || e.key === ' ') navigate('/login');
+							}}
+							onClick={() => navigate('/login')}
+						>
 							Already a user? Login.
 						</p>
 						<button onClick={submitHandler} className="loginButton">

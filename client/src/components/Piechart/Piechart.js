@@ -48,6 +48,17 @@ const DonutChart = ({ sixMonthsCategoryData, categories }) => {
 							}
 						}
 					}
+				},
+				{
+					breakpoint: 480,
+					options: {
+						chart: {
+							width: 200
+						},
+						legend: {
+							position: 'bottom'
+						}
+					}
 				}
 			],
 			stroke: {
@@ -101,21 +112,7 @@ const DonutChart = ({ sixMonthsCategoryData, categories }) => {
 			},
 			theme: {
 				palette: 'palette2'
-			},
-
-			responsive: [
-				{
-					breakpoint: 480,
-					options: {
-						chart: {
-							width: 200
-						},
-						legend: {
-							position: 'bottom'
-						}
-					}
-				}
-			]
+			}
 		};
 
 		const chart = new ApexCharts(chartRef.current, options);

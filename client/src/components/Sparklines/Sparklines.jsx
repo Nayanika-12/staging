@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'apexcharts/dist/apexcharts.css';
 import ApexCharts from 'apexcharts';
-import { useAppSelector } from '../../app/hooks';
 
 class Sparklines extends React.Component {
 	constructor(props) {

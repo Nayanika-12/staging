@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { updateUserBudgetApi } from '../../api/apiCalls';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
