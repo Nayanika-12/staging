@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server/app.js"
+    }
+  ],
+  "buildCommand": "npm install --force --prefix server && npm install --force --prefix client && npm run build --prefix client"
+}
