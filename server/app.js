@@ -18,7 +18,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Parse requests of content-type - application/json
 app.use(bodyParser.json());
-app.use(cors());
+const allowedOrigins = [
+	'http://localhost:3000',
+	'https://hack-rx4-0-main-fq2tqzxzs-nayanika-12s-projects.vercel.app'
+];
+
+const corsOptions = {
+	origin: allowedOrigins,
+	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
+	credentials: true
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Set up additional security headers using Helmet
 app.use(helmet());
