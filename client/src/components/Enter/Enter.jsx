@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import './Enter.css';
-import { motion, AnimateSharedLayout } from 'framer-motion';
-import {
-	TextField,
-	Button,
-	Select,
-	MenuItem,
-	InputLabel,
-	FormControl
-} from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { motion } from 'framer-motion';
+import { Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
+import { useAppSelector } from '../../app/hooks';
+import PropTypes from 'prop-types';
 
 function Enter({ selectedCategory }) {
 	const categories = useAppSelector(
 		(state) => state.transactionState.categories
 	);
-	var allowedCategories = [...categories];
-	allowedCategories = allowedCategories.filter(
+	const allowedCategoriesCopy = [...categories];
+	const allowedCategories = allowedCategoriesCopy.filter(
 		(category) => category.type !== 'income'
 	);
 
@@ -38,9 +32,6 @@ function Enter({ selectedCategory }) {
 					<FormControl fullWidth>
 						<InputLabel id="cat">CATEGORY</InputLabel>
 						<Select
-							sx={{
-								color: 'white'
-							}}
 							onChange={categoryHandler}
 							required
 							variant="standard"
@@ -68,5 +59,8 @@ function Enter({ selectedCategory }) {
 		</motion.div>
 	);
 }
+Enter.propTypes = {
+	selectedCategory: PropTypes.func
+};
 
 export default Enter;

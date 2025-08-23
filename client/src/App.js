@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import * as ReactDOM from 'react-dom/client';
+import * as ReactDOM from 'react-dom';
 
 import Budget from './pages/Budget/Budget';
 import Dashboard from './pages/Dashboard/Dashboard';

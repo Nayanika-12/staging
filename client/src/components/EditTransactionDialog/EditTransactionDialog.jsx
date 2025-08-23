@@ -1,16 +1,10 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import Slide from '@mui/material/Slide';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import Slide from '@material-ui/core/Slide';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { motion, AnimateSharedLayout } from 'framer-motion';
-import {
-	TextField,
-	Select,
-	MenuItem,
-	InputLabel,
-	FormControl
-} from '@mui/material';
+import { motion } from 'framer-motion';
+import { TextField, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 import {
 	closeModal,
 	deleteTransaction,
@@ -88,17 +82,6 @@ function EditTransactionDialog({ defaultData }) {
 	const handleClose = () => {
 		dispatch(closeModal());
 	};
-	const lightColor = {
-		input: {
-			color: 'white',
-			'&::placeholder': {
-				opacity: 1
-			}
-		},
-		label: {
-			color: 'white'
-		}
-	};
 
 	return (
 		<div>
@@ -132,12 +115,12 @@ function EditTransactionDialog({ defaultData }) {
 					<div className="topInput">
 						<div className="expense-name">
 							<TextField
-								sx={lightColor}
 								variant="standard"
 								value={editName}
 								placeholder="Name"
 								onChange={handleEditName}
-								// onChange={nameHandler}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 							></TextField>
 						</div>
 						<div className="amount">
@@ -148,7 +131,8 @@ function EditTransactionDialog({ defaultData }) {
 								value={editAmount}
 								onChange={handleEditAmount}
 								//onInput={handleInputChange}
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 							/>
 						</div>
 					</div>
@@ -164,14 +148,15 @@ function EditTransactionDialog({ defaultData }) {
 								}}
 								// defaultValue={editDate}
 								onInput={handleEditDate}
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 							/>
 						</div>
 						<div className="category">
 							<FormControl fullWidth>
 								<InputLabel id="category">Category</InputLabel>
 								<Select
-									sx={{
+									style={{
 										color: 'white'
 									}}
 									//onChange={categoryHandler}
@@ -193,9 +178,8 @@ function EditTransactionDialog({ defaultData }) {
 						<Button
 							className="add-button"
 							variant="contained"
-							sx={{
-								backgroundColor: '#5DE2B2',
-								':hover': { backgroundColor: '#636363' }
+							style={{
+								backgroundColor: '#5DE2B2'
 							}}
 							onClick={handleEditTransaction}
 						>
@@ -205,9 +189,8 @@ function EditTransactionDialog({ defaultData }) {
 							onClick={handleDeleteTransaction}
 							className="add-button"
 							variant="contained"
-							sx={{
-								backgroundColor: '#DF4E64',
-								':hover': { backgroundColor: '#636363' }
+							style={{
+								backgroundColor: '#DF4E64'
 							}}
 						>
 							Delete

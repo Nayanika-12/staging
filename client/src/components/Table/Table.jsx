@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import './Table.css';
-import { Button, Card, Tab } from '@mui/material';
+import PropTypes from 'prop-types';
 import { UilPen } from '@iconscout/react-unicons';
 import { useAppDispatch } from '../../app/hooks';
 import { openModal } from '../../features/transactionState/transactionStateSlice';
@@ -36,7 +36,6 @@ export default function BasicTable({ rows }) {
 		defaultDate,
 		transactionId
 	}) => {
-		// console.log(transactionId);
 		setSelectedToEdit({
 			defaultName,
 			defaultAmount,
@@ -65,51 +64,42 @@ export default function BasicTable({ rows }) {
 					}}
 				>
 					<Table
-						sx={{ minWidth: 650, maxHeight: '10rem' }}
+						style={{ minWidth: 650, maxHeight: '10rem', backgroundColor: '#616161' }}
 						aria-label="simple table"
-						style={{ backgroundColor: '#616161' }}
 					>
 						<TableHead>
 							<TableRow>
-								<TableCell sx={{ color: 'white' }}>Transaction Name</TableCell>
-								<TableCell sx={{ color: 'white' }}>Amount</TableCell>
-								<TableCell sx={{ color: 'white' }} align="left">
+								<TableCell style={{ color: 'white' }}>Transaction Name</TableCell>
+								<TableCell style={{ color: 'white' }}>Amount</TableCell>
+								<TableCell style={{ color: 'white' }} align="left">
 									Date
 								</TableCell>
-								<TableCell sx={{ color: 'white' }} align="left">
+								<TableCell style={{ color: 'white' }} align="left">
 									Transaction Type
 								</TableCell>
-								<TableCell sx={{ color: 'white' }} align="left">
+								<TableCell style={{ color: 'white' }} align="left">
 									Category
 								</TableCell>
-								{/* <TableCell sx={{ color: 'white' }} align="left">
-									Edit
-								</TableCell> */}
 							</TableRow>
 						</TableHead>
 						<TableBody style={{ color: 'white' }}>
 							{rows.map((row) => (
-								<TableRow
-									key={row.name}
-									sx={{
-										'&:last-child td, &:last-child th': { border: 0 }
-									}}
-								>
-									<TableCell sx={{ color: 'white' }} component="th" scope="row">
+								<TableRow key={row.name}>
+									<TableCell style={{ color: 'white' }} component="th" scope="row">
 										{row.name}
 									</TableCell>
-									<TableCell sx={{ color: 'white' }} align="left">
+									<TableCell style={{ color: 'white' }} align="left">
 										{row.amount}
 									</TableCell>
-									<TableCell sx={{ color: 'white' }} align="left">
+									<TableCell style={{ color: 'white' }} align="left">
 										{row.date}
 									</TableCell>
-									<TableCell sx={{ color: 'white' }} align="left">
+									<TableCell style={{ color: 'white' }} align="left">
 										<span className="status" style={makeStyle(row.type)}>
 											{row.type}
 										</span>
 									</TableCell>
-									<TableCell sx={{ color: 'white' }} align="left">
+									<TableCell style={{ color: 'white' }} align="left">
 										{row.category}
 									</TableCell>
 									<TableCell sx={{ color: 'white' }} align="left">
@@ -140,3 +130,6 @@ export default function BasicTable({ rows }) {
 		</div>
 	);
 }
+BasicTable.propTypes = {
+	rows: PropTypes.array
+};

@@ -2,14 +2,7 @@ import React, { useState } from 'react';
 import './ExpenseCard.css';
 
 import { motion, AnimateSharedLayout } from 'framer-motion';
-import {
-	TextField,
-	Button,
-	Select,
-	MenuItem,
-	InputLabel,
-	FormControl
-} from '@mui/material';
+import { TextField, Button, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 import { useAppDispatch } from '../../app/hooks';
 import { addTransaction } from '../../features/transactionState/transactionStateSlice';
 import { addTransactionApi } from '../../api/apiCalls';
@@ -112,10 +105,11 @@ function CompactCard({ param }) {
 			<div className="topInput">
 				<div className="expense-name">
 					<TextField
-						sx={lightColor}
 						label="Name"
 						variant="standard"
 						onChange={nameHandler}
+						InputProps={{ style: { color: 'white' } }}
+						InputLabelProps={{ style: { color: 'white' } }}
 					></TextField>
 				</div>
 				<div className="amount">
@@ -124,7 +118,8 @@ function CompactCard({ param }) {
 						type="text"
 						label="Amount"
 						onInput={handleInputChange}
-						sx={lightColor}
+						InputProps={{ style: { color: 'white' } }}
+						InputLabelProps={{ style: { color: 'white' } }}
 					/>
 				</div>
 			</div>
@@ -139,14 +134,15 @@ function CompactCard({ param }) {
 						}}
 						defaultValue={new Date().toISOString().split('T')[0]}
 						onChange={dateHandler}
-						sx={lightColor}
+						InputProps={{ style: { color: 'white' } }}
+						InputLabelProps={{ style: { color: 'white' } }}
 					/>
 				</div>
 				<div className="category">
 					<FormControl fullWidth>
 						<InputLabel id="category">Category</InputLabel>
 						<Select
-							sx={{
+							style={{
 								color: 'white'
 							}}
 							onChange={categoryHandler}
@@ -167,9 +163,8 @@ function CompactCard({ param }) {
 				onClick={submitHandler}
 				className="add-button"
 				variant="contained"
-				sx={{
-					backgroundColor: '#1D1D1D',
-					':hover': { backgroundColor: '#636363' }
+				style={{
+					backgroundColor: '#1D1D1D'
 				}}
 			>
 				Add

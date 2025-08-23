@@ -1,11 +1,10 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Button, TextField, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import { UilLeftArrowFromLeft } from '@iconscout/react-unicons';
 import './Profile.css';
+import PropTypes from 'prop-types';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
 	getNewAvatarApi,
-	getUserInfoApi,
 	updateUserInfoApi
 } from '../../api/apiCalls';
 import { UilCameraChange } from '@iconscout/react-unicons';
@@ -80,24 +79,11 @@ function Profile({ editProfileHandler }) {
 		);
 	};
 
-	const lightColor = {
-		borderColor: 'white',
-		input: {
-			color: 'white',
-			'&::placeholder': {
-				opacity: 1
-			}
-		},
-		label: {
-			color: 'white'
-		}
-	};
-
 	return (
 		<div className="profile">
 			<div className="edit-profile">
 				<Button
-					sx={{
+					style={{
 						marginTop: '20px',
 						backgroundColor: '#03DAC6',
 						color: 'white'
@@ -116,7 +102,8 @@ function Profile({ editProfileHandler }) {
 								style={{ marginTop: '10px' }}
 								placeholder="First Name"
 								fullWidth
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 							/>
 						</div>
 						<div className="right-field">
@@ -124,7 +111,8 @@ function Profile({ editProfileHandler }) {
 							<TextField
 								defaultValue={profileInfo.lastname}
 								onChange={lastNameHandler}
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 								style={{ marginTop: '10px' }}
 								placeholder="Last Name"
 								fullWidth
@@ -141,13 +129,15 @@ function Profile({ editProfileHandler }) {
 								placeholder="Email Address"
 								fullWidth
 								variant="outlined"
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 							/>
 						</div>
 						<div className="right-field">
 							<span>Phone</span>
 							<TextField
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 								defaultValue={profileInfo.phone}
 								onChange={phoneHandler}
 								style={{ marginTop: '10px' }}
@@ -163,7 +153,8 @@ function Profile({ editProfileHandler }) {
 								placeholder="Address"
 								defaultValue={profileInfo.address}
 								onChange={addressHandler}
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 								style={{ marginTop: '10px' }}
 								fullWidth
 								variant="outlined"
@@ -179,7 +170,8 @@ function Profile({ editProfileHandler }) {
 							<TextField
 								defaultValue={profileInfo.country}
 								onChange={countryHandler}
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 								style={{ marginTop: '10px' }}
 								fullWidth
 								variant="outlined"
@@ -191,7 +183,8 @@ function Profile({ editProfileHandler }) {
 							<TextField
 								defaultValue={profileInfo.postalCode}
 								onChange={postalCodeHandler}
-								sx={lightColor}
+								InputProps={{ style: { color: 'white' } }}
+								InputLabelProps={{ style: { color: 'white' } }}
 								style={{ marginTop: '10px' }}
 								fullWidth
 								placeholder="Postal Code"
@@ -199,7 +192,7 @@ function Profile({ editProfileHandler }) {
 						</div>
 					</div>
 					<Button
-						sx={{
+						style={{
 							backgroundColor: '#03DAC6',
 							width: '7rem',
 							color: 'white',
@@ -250,4 +243,7 @@ function Profile({ editProfileHandler }) {
 	);
 }
 
+Profile.propTypes = {
+	editProfileHandler: PropTypes.func
+};
 export default Profile;

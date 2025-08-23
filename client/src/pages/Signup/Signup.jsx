@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Signup.css';
-import Alert from '@mui/material/Alert';
 import { useAppDispatch } from '../../app/hooks';
 import { login } from '../../features/transactionState/transactionStateSlice';
 import { signupApi } from '../../api/apiCalls';

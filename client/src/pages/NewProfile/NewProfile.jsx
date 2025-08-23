@@ -22,7 +22,7 @@ import b6 from '../../imgs/badges/6.jpg';
 
 import badge from '../../imgs/badges/trial.png';
 import coin from '../../imgs/coin.png';
-import { Avatar, Badge, Button, Divider } from '@mui/material';
+import { Avatar, Badge, Button, Divider } from '@material-ui/core';
 import Leaderboard from '../../components/Leaderboard/Leaderboard';
 
 function NewProfile({ editProfileHandler }) {
@@ -35,14 +35,9 @@ function NewProfile({ editProfileHandler }) {
 					<Badge
 						overlap="circular"
 						anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-						badgeContent={
-							<Avatar sx={{ width: '3rem', height: '3rem' }} src={b4_2} />
-						}
+						badgeContent={<Avatar style={{ width: '3rem', height: '3rem' }} src={b4_2} />}
 					>
-						<Avatar
-							sx={{ width: '10rem', height: '10rem' }}
-							src={userInfo.profilePicture}
-						/>
+						<Avatar style={{ width: '10rem', height: '10rem' }} src={userInfo.profilePicture} />
 					</Badge>
 				</div>
 				<div className="profile-info-container">
@@ -59,7 +54,7 @@ function NewProfile({ editProfileHandler }) {
 					{/* <img style={{ width: '12rem' }} alt="currentBadge" src={badge}></img>
 					<p>POINTS: 2984</p> */}
 					<Button
-						sx={{
+						style={{
 							backgroundColor: '#EF5F38',
 							color: 'white',
 							height: '3rem'

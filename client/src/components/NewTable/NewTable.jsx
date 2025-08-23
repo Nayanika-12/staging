@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import './NewTable.css';
-import { Button, Card } from '@mui/material';
+import { Button } from '@material-ui/core';
 import { UilTrashAlt } from '@iconscout/react-unicons';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { deleteCategoryBudget } from '../../features/transactionState/transactionStateSlice';
@@ -33,8 +33,8 @@ export default function BasicTable() {
 	const [rows, setRows] = React.useState([]);
 	const dispatch = useAppDispatch();
 
-	var categories = useAppSelector((state) => state.transactionState.categories);
-	var budgetData = useAppSelector(
+	const categories = useAppSelector((state) => state.transactionState.categories);
+	const budgetData = useAppSelector(
 		(state) => state.transactionState.categoryWiseBudget
 	);
 	useEffect(() => {
@@ -68,54 +68,32 @@ export default function BasicTable() {
 						}}
 					>
 						<Table
-							sx={{ minWidth: 650, maxHeight: '15rem' }}
-							aria-label="simple table"
-							style={{ backgroundColor: '#544d4d' }}
+							style={{ minWidth: 650, maxHeight: '15rem', backgroundColor: '#544d4d' }}
 						>
 							<TableHead>
 								<TableRow>
-									<TableCell sx={{ color: 'white' }}>Category</TableCell>
-									<TableCell sx={{ color: 'white' }}>Budget</TableCell>
-									<TableCell sx={{ color: 'white' }}>Amount Spent</TableCell>
-									<TableCell sx={{ color: 'white' }} align="left">
+									<TableCell style={{ color: 'white' }}>Category</TableCell>
+									<TableCell style={{ color: 'white' }}>Budget</TableCell>
+									<TableCell style={{ color: 'white' }}>Amount Spent</TableCell>
+									<TableCell style={{ color: 'white' }} align="left">
 										Delete
 									</TableCell>
 								</TableRow>
 							</TableHead>
 							<TableBody style={{ color: 'white' }}>
 								{rows.map((row) => (
-									<TableRow
-										key={row.categoryId}
-										sx={{
-											'&:last-child td, &:last-child th': { border: 0 }
-										}}
-									>
-										<TableCell
-											sx={{ color: 'white' }}
-											component="th"
-											scope="row"
-										>
+									<TableRow key={row.categoryId}>
+										<TableCell style={{ color: 'white' }} component="th" scope="row">
 											{row.categoryName}
 										</TableCell>
-										<TableCell sx={{ color: 'white' }} align="left">
+										<TableCell style={{ color: 'white' }} align="left">
 											{row.categoryBudget}
 										</TableCell>
-										<TableCell sx={{ color: 'white' }} align="left">
+										<TableCell style={{ color: 'white' }} align="left">
 											{row.amountSpent}
 										</TableCell>
-										<TableCell
-											sx={{ color: 'white' }}
-											align="left"
-											className="cursor"
-										>
-											<Button
-												sx={{
-													backgroundColor: '#E65065',
-													color: 'white ',
-													fontSize: '0.7rem'
-												}}
-												onClick={handleDelete(row.categoryId)}
-											>
+										<TableCell style={{ color: 'white' }} align="left" className="cursor">
+											<Button style={{ backgroundColor: '#E65065', color: 'white ', fontSize: '0.7rem' }} onClick={handleDelete(row.categoryId)}>
 												<UilTrashAlt />
 											</Button>
 										</TableCell>

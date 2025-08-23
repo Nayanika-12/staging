@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import './OriginalTable.css';
 
 function createData(name, trackingId, date, status) {
@@ -46,7 +46,7 @@ export default function OriginalTable() {
 				component={Paper}
 				style={{ boxShadow: '0px 13px 20px 0px #80808029' }}
 			>
-				<Table sx={{ minWidth: 650 }} aria-label="simple table">
+				<Table style={{ minWidth: 650 }} aria-label="simple table">
 					<TableHead>
 						<TableRow>
 							<TableCell>Product</TableCell>
@@ -60,7 +60,6 @@ export default function OriginalTable() {
 						{rows.map((row) => (
 							<TableRow
 								key={row.name}
-								sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
 							>
 								<TableCell component="th" scope="row">
 									{row.name}
