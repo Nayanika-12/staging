@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const allowedOrigins = [
 	'http://localhost:3000',
-	'hack-rx4-0-main-q6j158p2x-nayanika-12s-projects.vercel.app'
+	'http://hack-rx4-0-main-q6j158p2x-nayanika-12s-projects.vercel.app'
 ];
 
 const corsOptions = {
