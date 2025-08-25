@@ -25,7 +25,7 @@ To deploy this project run
 
 The live website is hosted at:
 
-https://trackifi.vercel.app/](https://hack-rx4-0-main.vercel.app/
+https://hack-rx4-0-main.vercel.app
 
 
 
