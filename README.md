@@ -38,7 +38,7 @@ REACT_APP_API_URL= "URL of server (Eg: http://localhost:5000)"
 
 The live website is hosted at:
 
-https://trackifi.vercel.app/
+https://hack-rx4-0-main.vercel.app/
 
 
 
